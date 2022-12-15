@@ -1,0 +1,11 @@
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\dmp3a\dmp3Default_20648.c
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\dmp3a\dmp3Driver.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\invn\common\int_types.h
+.\_build\dmp3default_20648.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\dmp3a\dmp3Default_20648.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\common\mltypes.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\driver\inv_mems_defines.h
+.\_build\dmp3default_20648.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\_build\dmp3default_20648.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\common\mltypes.h
+.\_build\dmp3default_20648.o: ..\..\..\ICM_20948\Mems\common\inv_mems_drv_hook.h

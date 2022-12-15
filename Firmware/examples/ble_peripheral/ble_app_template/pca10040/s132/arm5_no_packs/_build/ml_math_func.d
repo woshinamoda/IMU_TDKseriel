@@ -1,0 +1,9 @@
+.\_build\ml_math_func.o: ..\..\..\ICM_20948\Mems\invn\common\ml_math_func.c
+.\_build\ml_math_func.o: ..\..\..\ICM_20948\Mems\invn\common\mlmath.h
+.\_build\ml_math_func.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\_build\ml_math_func.o: ..\..\..\ICM_20948\Mems\invn\common\ml_math_func.h
+.\_build\ml_math_func.o: ..\..\..\ICM_20948\Mems\invn\common\invn_types.h
+.\_build\ml_math_func.o: ..\..\..\ICM_20948\Mems\invn\common\int_types.h
+.\_build\ml_math_func.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\_build\ml_math_func.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+.\_build\ml_math_func.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

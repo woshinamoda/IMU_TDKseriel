@@ -1,0 +1,10 @@
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\driver\inv_mems_mpu_selftest.c
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\driver\inv_mems_mpu_selftest.h
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\driver\inv_mems_defines.h
+.\_build\inv_mems_mpu_selftest.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\_build\inv_mems_mpu_selftest.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\common\mltypes.h
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\driver\inv_mems_defines.h
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\common\inv_mems_drv_hook.h
+.\_build\inv_mems_mpu_selftest.o: ..\..\..\ICM_20948\Mems\invn\common\int_types.h
+.\_build\inv_mems_mpu_selftest.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
