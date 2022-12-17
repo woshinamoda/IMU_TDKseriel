@@ -103,3 +103,6 @@
 .\_build\main.o: ..\..\..\..\..\..\components\libraries\delay\nrf_delay.h
 .\_build\main.o: ..\..\..\main.h
 .\_build\main.o: ..\..\..\ICM_20948\EconDriver\icm_twi_driver.h
+.\_build\main.o: ..\..\..\..\..\..\integration\nrfx\legacy\nrf_drv_gpiote.h
+.\_build\main.o: ..\..\..\..\..\..\modules\nrfx\drivers\include\nrfx_gpiote.h
+.\_build\main.o: ..\..\..\..\..\..\modules\nrfx\hal/nrf_gpiote.h

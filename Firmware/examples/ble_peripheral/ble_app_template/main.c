@@ -82,20 +82,23 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 #include "nrf_delay.h"
-
+#include "app_timer.h"
 #include "main.h"
 
 #include "icm_twi_driver.h"
+#include "nrf_drv_gpiote.h"
 
 
-APP_TIMER_DEF(m_app_timer_id);		
-#define	period_TIMER_INTERVAL				APP_TIMER_TICKS(10)	
 
 
 
 NRF_BLE_GATT_DEF(m_gatt);                                                       /**< GATT module instance. */
 NRF_BLE_QWR_DEF(m_qwr);                                                         /**< Context for the Queued Write module.*/
 BLE_ADVERTISING_DEF(m_advertising);                                             /**< Advertising module instance. */
+
+APP_TIMER_DEF(m_icm_timer_id);	
+#define	period_TIMER_INTERVAL				APP_TIMER_TICKS(100)	
+
 
 static uint16_t m_conn_handle = BLE_CONN_HANDLE_INVALID;                        /**< Handle of the current connection. */
 
@@ -158,7 +161,8 @@ static void pm_evt_handler(pm_evt_t const * p_evt)
 
 static void Nordic_period_timeout_handle()
 {
-
+		icm_20948GyroRead();
+		icm_20948AccelRead();
 }
 
 static void timers_init(void)
@@ -168,16 +172,10 @@ static void timers_init(void)
     APP_ERROR_CHECK(err_code);
 
     // Create timers.
-		  err_code = app_timer_create(&m_app_timer_id, APP_TIMER_MODE_REPEATED, Nordic_period_timeout_handle);
+		  err_code = app_timer_create(&m_icm_timer_id, APP_TIMER_MODE_REPEATED, Nordic_period_timeout_handle);
     APP_ERROR_CHECK(err_code);	
 
-    /* YOUR_JOB: Create any timers to be used by the application.
-                 Below is an example of how to create a timer.
-                 For every new timer needed, increase the value of the macro APP_TIMER_MAX_TIMERS by
-                 one.
-       ret_code_t err_code;
-       err_code = app_timer_create(&m_app_timer_id, APP_TIMER_MODE_REPEATED, timer_timeout_handler);
-       APP_ERROR_CHECK(err_code); */
+
 }
 
 
@@ -697,7 +695,43 @@ static void advertising_start(bool erase_bonds)
 
 /**@brief Function for application main entry.
  */
+
+#define 	icm_INIT_PIN						 5
+Sensor_DataTypedef	IMU_Data={0};
 uint8_t who_am_i_ID = 0;
+
+
+void icm_20948_GPIOTE_Handle(nrf_drv_gpiote_pin_t	pin, nrf_gpiote_polarity_t action)
+{
+	ret_code_t	err_code;
+	uint8_t state_buf = 0;
+	state_buf = icm_20948_ReadOne_Byte(INT_STATUS_1);
+	if(state_buf == 1)
+	{
+		state_buf = 0;
+		icm_20948GyroRead();
+		icm_20948AccelRead();
+	}
+
+}
+
+void icm_20948_gpiote_init()
+{
+	ret_code_t	err_code;
+	err_code = nrf_drv_gpiote_init();
+	APP_ERROR_CHECK(err_code);
+	
+	nrf_drv_gpiote_in_config_t icm_INIT_GPIO = NRFX_GPIOTE_CONFIG_IN_SENSE_LOTOHI(false);		//下降沿检测	
+	icm_INIT_GPIO.pull = NRF_GPIO_PIN_NOPULL;			//引脚本身低电平推挽
+
+	err_code = nrf_drv_gpiote_in_init(icm_INIT_PIN,&icm_INIT_GPIO,icm_20948_GPIOTE_Handle);
+	APP_ERROR_CHECK(err_code);
+	
+	nrf_drv_gpiote_in_event_enable(icm_INIT_PIN,true);		
+}
+
+
+
 int main(void)
 {
     bool erase_bonds;
@@ -708,9 +742,10 @@ int main(void)
 		nrf_gpio_pin_clear(AD0);		//icm_20948选用低地址与MPU6050一致
 		Nordic_TWI_init();
 	
-		who_am_i_ID = icm_20948_ReadOne_Byte(0x00);			//读取名称寄存器
-		while(who_am_i_ID != 0xEA){};
 	
+		icm_20948_init();								//罗盘仪与陀螺仪加速度计初始化
+//		icm_20948_gpiote_init();				//对应引脚中断初始化
+			
     log_init();
     timers_init();
     buttons_leds_init(&erase_bonds);
@@ -731,23 +766,12 @@ int main(void)
 
 		nrf_gpio_cfg_output(14);
 		
-	err_code =	app_timer_start(m_app_timer_id, period_TIMER_INTERVAL, NULL);
-	APP_ERROR_CHECK(err_code);
+//		err_code =	app_timer_start(m_icm_timer_id, period_TIMER_INTERVAL, NULL);
+//		APP_ERROR_CHECK(err_code);
     // Enter main loop.
     for (;;)
     {
-		idle_state_handle();
-				nrf_gpio_pin_clear(AD0);
-		//icm_20948_Write_Byte(0x00,0xff);			
-		nrf_delay_ms(100);
-			nrf_gpio_pin_set(AD0);
-		//icm_20948_Write_Byte(0x00,0xaf);
-		nrf_delay_ms(100);				
-			
-			
-			
-			
-			
+			idle_state_handle();
     }
 }
 
