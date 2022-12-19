@@ -1,0 +1,92 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.27.1.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Sok Sok, sok, LIC=LJWPC-73Z5W-24HSS-LK44V-6WJZV-3E21A
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.27.1.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         
+Dialog DLL:      
+Target DLL:      Segger\JL2CM3.dll V2.99.35.0
+Dialog DLL:      TCM.DLL V1.36.1.0
+ 
+<h2>Project:</h2>
+D:\ProGram_LiWang\IMU_TDKseriel\Firmware\examples\ble_peripheral\ble_app_template\pca10040\s132\arm5_no_packs\ble_app_template_pca10040_s132.uvprojx
+Project File Date:  12/15/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'nrf52832_xxaa'
+compiling main.c...
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(179): warning:  #1295-D: Deprecated declaration icm_20948_init - give arg types
+  void icm_20948_init();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(180): warning:  #1295-D: Deprecated declaration icm_20948_Check - give arg types
+  bool icm_20948_Check();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(181): warning:  #1295-D: Deprecated declaration icm_20948GyroRead - give arg types
+  void icm_20948GyroRead();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(182): warning:  #1295-D: Deprecated declaration icm_20948AccelRead - give arg types
+  void icm_20948AccelRead();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(183): warning:  #1295-D: Deprecated declaration ak_09916MagRead - give arg types
+  void ak_09916MagRead();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(186): warning:  #1295-D: Deprecated declaration ak_09916MagCheck - give arg types
+  bool ak_09916MagCheck();
+..\..\..\ICM_20948\EconDriver\icm_twi_driver.h(194): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\..\..\main.c(92): warning:  #1295-D: Deprecated declaration get_data_test - give arg types
+  void get_data_test();
+..\..\..\main.c(174): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "app_timer_timeout_handler_t"
+  		  err_code = app_timer_create(&m_icm_timer_id, APP_TIMER_MODE_REPEATED, Nordic_period_timeout_handle);
+..\..\..\main.c(705): warning:  #177-D: variable "err_code"  was declared but never referenced
+  	ret_code_t	err_code;
+..\..\..\main.c(737): warning:  #177-D: variable "err_code"  was declared but never referenced
+  		ret_code_t err_code;
+..\..\..\main.c(628): warning:  #177-D: function "buttons_leds_init"  was declared but never referenced
+  static void buttons_leds_init(bool * p_erase_bonds)
+..\..\..\main.c: 12 warnings, 0 errors
+linking...
+Program Size: Code=44240 RO-data=8108 RW-data=536 ZI-data=12672  
+FromELF: creating hex file...
+".\_build\nrf52832_xxaa.axf" - 0 Error(s), 12 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
+                ARM.CMSIS.5.6.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.3.0
+
+Package Vendor: NordicSemiconductor
+                http://developer.nordicsemi.com/nRF5_SDK/pieces/nRF_DeviceFamilyPack/NordicSemiconductor.nRF_DeviceFamilyPack.8.32.1.pack
+                NordicSemiconductor.nRF_DeviceFamilyPack.8.32.1
+                Nordic Semiconductor nRF ARM devices Device Family Pack with BSD license.
+   * Component: Startup Version: 8.32.1
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_nrf52832_xxaa
+  C:\Users\Sok\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  C:\Users\Sok\AppData\Local\Arm\Packs\NordicSemiconductor\nRF_DeviceFamilyPack\8.32.1\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.3.0
+
+   * Component: NordicSemiconductor::Device:Startup:8.32.1
+      Source file:   Device\Source\arm\arm_startup_nrf52.s
+      Source file:   Device\Source\system_nrf52.c
+      Include file:  Device\Include\system_nrf52.h
+      Include file:  Device\Include\system_nrf.h
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
