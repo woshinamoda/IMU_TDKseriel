@@ -27,3 +27,6 @@ TDK旗下6轴9轴芯片驱动代码
 ***
 2022-12-15<br>
 修改中断读出数据，但是只能读前两次<br>
+
+![Image text]
+(picutre_Config/NUCLEO_circuit_icm.png)
